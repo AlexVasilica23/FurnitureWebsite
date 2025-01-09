@@ -50,7 +50,7 @@
         header button {
             background: none;
             border: none;
-            color: #D5BDAF;
+            color: red;
             font-size: 26px;
             cursor: pointer;
             transition: color 0.3s;
@@ -186,9 +186,12 @@
             .carousel {
                 overflow-x: scroll;
                 scroll-snap-type: x mandatory;
+                padding: 10px;
             }
 
             .carousel-item {
+                min-width: calc(100vw - 40px); /* Ensures each card fits within the viewport */
+                height: auto; /* Adjust the height dynamically */
                 scroll-snap-align: center;
             }
 
