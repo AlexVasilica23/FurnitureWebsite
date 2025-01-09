@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Website</title>
+        
+    <link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+    <header id="header">
+        <div>
+            <h1>Mobilă cu Stil Iasi</h1>
+            <p class="header-message">By Nare Marius</p>
+        </div>
+        <nav>
+            <button onclick="alert('Home clicked')">Home</button>
+            <button onclick="alert('About clicked')">About</button>
+            <button onclick="alert('Contact clicked')">Contact</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video id="video-player" autoplay muted loop>
+            <source id="video-source" src="videos/video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Tu vii cu ideea, noi venim cu mobila!</h1>
+    </section>
+
+    <section class="description">
+        <h2>Ce oferim</h2>
+        <p>
+            Ne dedicăm creării mobilierului care îmbină eleganța cu funcționalitatea.
+            Oferim soluții personalizate pentru fiecare spațiu, fie că este vorba despre bucătărie, dormitor, baie sau birou.
+        </p>
+        <p>
+            Colaborăm cu designeri de top și utilizăm materiale de calitate superioară pentru a garanta durabilitatea și stilul
+            fiecărui produs. Transformă-ți casa într-un spațiu primitor și modern cu ajutorul nostru!
+        </p>
+    </section>
+
+    <section class="carousel-container">
+        <button class="carousel-arrow arrow-left" onclick="scrollCarousel(-1)">&#9664;</button>
+        <div class="carousel" id="carousel">
+            <div class="carousel-item" onclick="location.href='kitchen.html'">
+                <img src="images/kitchen2.jpg" alt="Kitchen">
+                <h3>Bucătărie</h3>
+            </div>
+            <div class="carousel-item" onclick="location.href='bedroom.html'">
+                <img src="images/bedroom.jpg" alt="Bedroom">
+                <h3>Dormitor</h3>
+            </div>
+            <div class="carousel-item" onclick="location.href='bathroom.html'">
+                <img src="images/livingroom.jpg" alt="Bathroom">
+                <h3>Living</h3>
+            </div>
+            <div class="carousel-item" onclick="location.href='bathroom.html'">
+                <img src="images/bathroom.jpg" alt="Bathroom">
+                <h3>Baie</h3>
+            </div>
+            <div class="carousel-item" onclick="location.href='office.html'">
+                <img src="images/homeOffice.jpg" alt="Home Office">
+                <h3>Home Office</h3>
+            </div>
+        </div>
+        <button class="carousel-arrow arrow-right" onclick="scrollCarousel(1)">&#9654;</button>
+    </section>
+
+    <script>
+        const header = document.getElementById('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('carousel');
+            const scrollAmount = carousel.offsetWidth;
+             carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Mobilă cu stil</p>
+        <!-- <h1>Vasile a lucrat aici!</h1> -->
+    </footer>
+
+</body>
+</html>
