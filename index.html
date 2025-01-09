@@ -10,26 +10,28 @@
 <body>
     <header id="header">
         <div>
-            <h1>Mobilă cu Stil Iasi</h1>
+            <h1>Mobilă cu Stil Iași</h1>
             <p class="header-message">By Nare Marius</p>
         </div>
-        <nav>
-            <button onclick="alert('Home clicked')">Home</button>
-            <button onclick="alert('About clicked')">About</button>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav id="nav-menu" class="hidden">
+            <button onclick="document.getElementById('description').scrollIntoView({ behavior: 'smooth' });">Despre noi</button>
+            <button onclick="alert('About clicked')">Portofoliu</button>
+            <button onclick="alert('About clicked')">Servicii</button>
             <button onclick="alert('Contact clicked')">Contact</button>
         </nav>
     </header>
 
     <section class="hero">
         <video id="video-player" autoplay muted loop>
-            <source id="video-source" src="videos/video2.mp4" type="video/mp4">
+            <source id="video-source" src="videos/kitchen.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <h1>Tu vii cu ideea, noi venim cu mobila!</h1>
     </section>
 
-    <section class="description">
-        <h2>Ce oferim</h2>
+    <section class="description" id = "description">
+        <h2 id="description">Ce oferim</h2>
         <p>
             Ne dedicăm creării mobilierului care îmbină eleganța cu funcționalitatea.
             Oferim soluții personalizate pentru fiecare spațiu, fie că este vorba despre bucătărie, dormitor, baie sau birou.
@@ -40,8 +42,10 @@
         </p>
     </section>
 
+    <h2>Portofoliu</h2>
+    <p>Descoperă colecțiile noastre de mobilier pentru fiecare încăpere a casei tale.</p>
     <section class="carousel-container">
-        <button class="carousel-arrow arrow-left" onclick="scrollCarousel(-1)">&#9664;</button>
+        <!-- <button class="carousel-arrow arrow-left" onclick="scrollCarousel(-1)">&#9664;</button> -->
         <div class="carousel" id="carousel">
             <div class="carousel-item" onclick="location.href='kitchen.html'">
                 <img src="images/kitchen2 (1).jpg" alt="Kitchen">
@@ -64,35 +68,46 @@
                 <h3>Home Office</h3>
             </div>
         </div>
-        <button class="carousel-arrow arrow-right" onclick="scrollCarousel(1)">&#9654;</button>
+        <!-- <button class="carousel-arrow arrow-right" onclick="scrollCarousel(1)">&#9654;</button> -->
     </section>
 
     <script>
-        const header = document.getElementById('header');
-        let lastScrollTop = 0;
+    const header = document.getElementById('header');
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            if (scrollTop > lastScrollTop) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-
-            lastScrollTop = scrollTop;
-        });
+        if (scrollTop === 0) {
+            header.classList.remove('hidden'); // Show header only at the top of the page
+        } else {
+            header.classList.add('hidden'); // Hide header as soon as scrolling begins
+        }
+    });
 
         function scrollCarousel(direction) {
             const carousel = document.getElementById('carousel');
             const scrollAmount = carousel.offsetWidth;
-             carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
+
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', (event) => {
+        if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            hideMenu();
+        }
+    });
+    function hideMenu() {
+        navMenu.classList.remove('show');
+    }
     </script>
 
     <footer>
         <p>&copy; 2025 Mobilă cu stil</p>
-        <!-- <h1>Vasile a lucrat aici!</h1> -->
+        <p>Toate drepturile rezervate.</p>
     </footer>
 
 </body>

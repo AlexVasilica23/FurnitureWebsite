@@ -34,7 +34,7 @@
             opacity: 1;
             margin: 0;
             font-size: 50px;
-            color: #BC9A6C;
+            color: #003049;
         }
 
         .header-message{
@@ -48,9 +48,10 @@
         }
 
         header button {
+            font-family: "Montserrat", serif;
             background: none;
             border: none;
-            color: red;
+            color: #003049;
             font-size: 26px;
             cursor: pointer;
             transition: color 0.3s;
@@ -58,6 +59,10 @@
 
         header button:hover {
             color: #84A98C;
+        }
+
+        header nav.hidden {
+            display: none;
         }
 
         .hero {
@@ -95,13 +100,11 @@
         }
 
         .carousel {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             padding: 20px;
-            max-width: 85%;
-            scrollbar-width: none;
+            background-color: #EDEDE9;
         }
 
         .carousel::-webkit-scrollbar {
@@ -182,9 +185,18 @@
             text-align: center;
         }
 
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             .carousel {
                 overflow-x: scroll;
+                grid-template-columns: 1fr;
                 scroll-snap-type: x mandatory;
                 padding: 10px;
             }
@@ -212,24 +224,25 @@
                 font-size: 1.5rem;
             }
 
+            header nav {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: rgba(214, 204, 194, 0.9);
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
             .hero h1 {
                 font-size: 2rem;
+            }
+
+            .menu-toggle {
+                display: block;
             }
         }
-
-        /* @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .carousel-item {
-                min-width: 80%;
-            }
-        } */
 
         @media (max-width: 480px) {
             header nav {
